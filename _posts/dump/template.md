@@ -5,4 +5,4 @@ category: dump
 description: Die Erkenntnis.
 ---
 
-[Mukosame]:    http://mukosame.github.io  "Mukosame"
+[Lygone]:    http://lygone.github.io  "Lygone"

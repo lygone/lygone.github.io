@@ -8,5 +8,5 @@ description: Dinge von Hand gemacht.
 2015-12-12 By {{ site.author_info }}
 
 
-[Mukosame]:    http://mukosame.github.io  "Mukosame"
+[Lygone]:    http://lygone.github.io  "Lygone"
 [1]:    {{ page.url}}  ({{ page.title }})
