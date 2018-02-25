@@ -1,1 +1,14 @@
-theme: jekyll-theme-cayman
+auto: true
+
+markdown: rdiscount
+
+highlighter: 'pygments'
+#paginate: 8
+permalink: /:title
+
+name: “Lygone's Blog”
+title: Lygone's blog
+description: Everything about Lygone.
+url: http://lygone.github.io
+feed: /atom.xml
+author_info: <a href="http://lygone.github.io/">Lygone</a>
