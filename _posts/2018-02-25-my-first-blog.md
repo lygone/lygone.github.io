@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Lygone's first blog 
-category: blog
+category: 博客
 description: ‍‍‍‍‍‍‍‍‍‍‍‍终于建好博客了。。。
 ---
 发现百度上搜索到的建立博客方法真的很不靠谱，小白搜索了很多个教程但真正实用的寥寥无几，经过三个小时的战斗（说出来我自己都不信。。。）我终于建立成功了自己的第一个博客。现在细细想来其实也不是很难，只是自己折腾错了方法，下面我推荐一个搭建github博客的教程，希望能给大家帮助 https://zhuanlan.zhihu.com/p/28321740
