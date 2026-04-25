@@ -1,0 +1,49 @@
+<aside class="sidebar d-flex flex-column justify-content-between">
+  <div class="sidebar-top">
+    <!-- 头像 -->
+    <div class="sidebar-avatar text-center">
+      <a href="{{ '/' | relative_url }}">
+        <img src="{{ site.avatar | relative_url }}" alt="avatar" class="rounded-circle" width="90" height="90"
+          loading="lazy">
+      </a>
+    </div>
+
+    <!-- 站点标题和描述 -->
+    <div class="sidebar-meta text-center">
+      <a href="{{ '/' | relative_url }}" class="site-title d-block">{{ site.title }}</a>
+      <span class="site-subtitle d-block">{{ site.tagline }}</span>
+    </div>
+
+    <!-- 社交链接 -->
+    <div class="sidebar-social text-center">
+      {% if site.social.github %}
+        <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      {% endif %}
+
+      {% if site.social.twitter %}
+        <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      {% endif %}
+
+      {% if site.social.email %}
+        <!-- 修改点：点击复制邮箱，不再唤起邮件客户端 -->
+        <a href="javascript:void(0);"
+           onclick="navigator.clipboard.writeText('{{ site.social.email }}').then(function() { alert('邮箱已复制：{{ site.social.email }}'); });"
+           aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      {% endif %}
+
+      {% for link in site.social.links %}
+        <a href="{{ link }}" target="_blank" rel="noopener" aria-label="social link">
+          <i class="fas fa-link"></i>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- 修改点：底部 RSS 已移除，整个 sidebar-bottom 区块不再需要 -->
+</aside>
