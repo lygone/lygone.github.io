@@ -122,13 +122,13 @@ comments:
   # Giscus options › https://giscus.app
   giscus:
     repo: lygone/lygone.github.io
-    repo_id: MDEwOlJlcG9zaXRvcnkxMjI4MTMzNjM=
-    category: Announcements
-    category_id: DIC_kwDOB1H7s84C7pyq
+    repo_id: "MDEwOlJlcG9zaXRvcnkxMjI4MTMzNjM="
+    category: "Announcements"
+    category_id: "DIC_kwDOB1H7s84C7pyq"
     mapping: # optional, default to 'pathname'
     strict: # optional, default to '0'
-    input_position: top # optional, default to 'bottom'
-    lang: zh-CN# optional, default to the value of `site.lang`
+    input_position: "top" # optional, default to 'bottom'
+    lang: "zh-CN" # optional, default to the value of `site.lang`
     reactions_enabled: # optional, default to the value of `1`
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
