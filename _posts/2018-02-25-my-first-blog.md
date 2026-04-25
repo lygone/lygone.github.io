@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      Lygone's first blog 
+tags: 笔记
 category: 博客
 description: ‍‍‍‍‍‍‍‍‍‍‍‍终于建好博客了。。。
 ---
