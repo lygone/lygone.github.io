@@ -52,3 +52,27 @@ h1, h2, h3, h4, h5, h6 {
 code, pre {
   font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
 }
+/* ========== 图片排版优化 ========== */
+/* 图片居中 + 响应式 + 圆角 */
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 6px;
+}
+
+/* 图片标题（居中灰色小字） */
+.image-caption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #8b919a;
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 图片 + 标题整体留白 */
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
