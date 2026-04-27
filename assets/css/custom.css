@@ -1,4 +1,9 @@
-/* 侧边栏深色简约风格 */
+/* ==========================================
+   Chirpy 自定义样式
+   包含：深色侧边栏 / 莫兰迪点缀色 / 文章卡阴影 / 字体优化
+   ========================================== */
+
+/* ---------- 1. 侧边栏深色简约风格 ---------- */
 #sidebar {
   background-color: #1e2229;
   color: #c0c4cc;
@@ -14,3 +19,36 @@
 }
 #sidebar .sidebar-bottom a { color: #8b919a; }
 #sidebar .sidebar-bottom a:hover { color: #ffffff; }
+
+/* ---------- 2. 莫兰迪灰绿点缀色 ---------- */
+:root {
+  --link-color: #7a8b7a;
+  --link-hover-color: #5b6b5b;
+}
+
+/* ---------- 3. 文章区微妙留白与阴影 ---------- */
+html {
+  background-color: #f8f9fa;
+}
+
+#main-wrapper .post-preview {
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  border-radius: 8px;
+  padding: 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+/* ---------- 4. 字体调整（与官方 v7.4+ 同步） ---------- */
+body {
+  font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Lato, 'Microsoft Yahei', sans-serif;
+  font-weight: 600;
+}
+
+code, pre {
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+}
