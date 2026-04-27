@@ -1,51 +1,31 @@
-
-/* 侧边栏深色简约风格 - 基于 Chirpy v7.x 官方源码 */
-#sidebar {
-  background-color: #1e2229; /* 深灰底色，不死黑 */
-  color: #c0c4cc;               /* 浅灰文字，柔和 */
+/* 侧边栏深色 - 强制覆盖 */
+html body #sidebar {
+  background-color: #1e2229 !important;
+  color: #c0c4cc !important;
 }
 
-/* 侧边栏里的所有链接 */
-#sidebar a {
-  color: #a0a7b0;
+html body #sidebar .site-title {
+  color: #e8eaed !important;
 }
 
-#sidebar a:hover {
-  color: #ffffff;
+html body #sidebar .site-subtitle {
+  color: #9aa0a6 !important;
 }
 
-/* 头像下方的标题和描述 */
-#sidebar .site-title {
-  color: #e8eaed;
-}
-#sidebar .site-subtitle {
-  color: #9aa0a6;
+html body #sidebar .nav-link {
+  color: #b0b6be !important;
 }
 
-/* 导航菜单项 */
-#sidebar .nav-link {
-  color: #b0b6be;
-}
-#sidebar .nav-link:hover {
-  background-color: rgba(255,255,255,0.06);
-  color: #e8eaed;
+html body #sidebar .nav-link:hover,
+html body #sidebar .nav-item.active .nav-link {
+  color: #ffffff !important;
+  background-color: rgba(255,255,255,0.12) !important;
 }
 
-/* 当前激活的导航项 */
-#sidebar .nav-item.active .nav-link {
-  color: #ffffff;
-  background-color: rgba(255,255,255,0.12);
+html body #sidebar .sidebar-bottom a {
+  color: #8b919a !important;
 }
 
-/* 底部社交图标的样式微调 */
-#sidebar .sidebar-bottom a {
-  color: #8b919a;
-}
-#sidebar .sidebar-bottom a:hover {
-  color: #ffffff;
-}
-
-/* 社交图标前的分隔线颜色（如果有的话） */
-#sidebar .icon-border {
-  border-color: rgba(255,255,255,0.15);
+html body #sidebar .sidebar-bottom a:hover {
+  color: #ffffff !important;
 }
