@@ -1,0 +1,33 @@
+// 首先确保完整引入 Chirpy 主题所有样式
+@import 'jekyll-theme-chirpy';
+
+// 自定义样式：为侧边栏换上深色主题
+#sidebar {
+  background-color: #1e2229;
+  color: #c0c4cc;
+}
+
+#sidebar .site-title {
+  color: #e8eaed;
+}
+
+#sidebar .site-subtitle {
+  color: #9aa0a6;
+}
+
+#sidebar .nav-link {
+  color: #b0b6be;
+}
+
+#sidebar .nav-link:hover,
+#sidebar .nav-item.active .nav-link {
+  color: #ffffff;
+  background-color: rgba(255,255,255,0.12);
+}
+
+#sidebar .sidebar-bottom a {
+  color: #8b919a;
+}
+#sidebar .sidebar-bottom a:hover {
+  color: #ffffff;
+}
