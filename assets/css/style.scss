@@ -1,11 +1,15 @@
-// 首先确保完整引入 Chirpy 主题所有样式
+---
+---
+
 @import 'jekyll-theme-chirpy';
 
-// 自定义样式：为侧边栏换上深色主题
+/* 侧边栏深色 */
 #sidebar {
   background-color: #1e2229;
   color: #c0c4cc;
 }
+/* ...其余样式 */
+
 
 #sidebar .site-title {
   color: #e8eaed;
