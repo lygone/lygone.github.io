@@ -31,7 +31,8 @@ html[data-mode="light"] {
   background-color: #0d1b2a !important;
 }
 
-#sidebar .site-title {
+#sidebar .site-title,
+#sidebar .site-title:hover {
   color: #e8f0fe;
   font-weight: 700;
 }
