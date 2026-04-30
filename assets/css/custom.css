@@ -290,7 +290,6 @@ body {
 /* 标题字体 */
 h1, h2, h3, h4, h5, h6,
 .card-title,
-#sidebar .site-title,
 .post-title {
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
   font-weight: 700;
