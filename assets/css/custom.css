@@ -272,3 +272,116 @@ figure {
 footer a {
   color: #3a7bd5;
 }
+
+/* ==========================================
+   17. 字体与排版优化
+   ========================================== */
+
+/* 全局基础字体 */
+body {
+  font-family: 'Source Sans Pro', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #2d333b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 标题字体 */
+h1, h2, h3, h4, h5, h6,
+.card-title,
+#sidebar .site-title,
+.post-title {
+  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  color: #1a2a3a;
+}
+
+h1 { font-size: 1.85rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+
+/* 正文段落 */
+.post-content p,
+.content p {
+  margin-bottom: 1.2rem;
+  line-height: 1.85;
+}
+
+/* 正文列表 */
+.post-content ul,
+.post-content ol,
+.content ul,
+.content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.post-content li,
+.content li {
+  margin-bottom: 0.4rem;
+  line-height: 1.8;
+}
+
+/* 文章描述 / 摘要 */
+.post-desc,
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #5a6470;
+}
+
+/* 文章元信息 */
+.post-meta {
+  font-size: 0.875rem;
+  color: #7c8896;
+}
+
+/* 代码字体 */
+code, pre, kbd, samp {
+  font-family: 'Cascadia Code', 'SF Mono', 'Fira Code', Monaco, Consolas, 'Microsoft YaHei', monospace;
+  font-size: 0.88rem;
+}
+
+pre code {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* 加粗优化 */
+strong, b {
+  font-weight: 700;
+  color: #1a2a3a;
+}
+
+/* 分隔线 */
+hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+/* 侧边栏字体微调 */
+#sidebar {
+  font-size: 0.95rem;
+  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+}
+#sidebar .nav-link span {
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+}
+
+/* 首页卡片标题字号 */
+.card .card-title {
+  font-size: 1.2rem;
+}
+
+/* ==========================================
+   18. 隐藏 Twitter 图标
+   ========================================== */
+
+#sidebar .sidebar-bottom a[aria-label="twitter"] {
+  display: none !important;
+}
