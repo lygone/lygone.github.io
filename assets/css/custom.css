@@ -1,68 +1,179 @@
 /* ==========================================
-   Chirpy 自定义样式
-   包含：深色侧边栏 / 莫兰迪点缀色 / 文章卡阴影 / 字体优化
+   Chirpy 自定义样式 — 日系靛蓝
+   风格：沉静、简洁、Zenn/Notion 式
    ========================================== */
 
-/* ---------- 1. 侧边栏深色简约风格 ---------- */
-#sidebar {
-  background-color: #1e2229;
-  color: #c0c4cc;
+/* ---------- 变量 ---------- */
+:root {
+  --accent:         #5b7fbc;
+  --accent-hover:   #4769a0;
+  --accent-light:   #eef3fa;
+  --sidebar-bg:     #1c2333;
+  --sidebar-hover:  rgba(91,127,188,0.15);
+  --card-shadow:    0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --card-hover-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  --card-radius:    10px;
 }
 
-#sidebar .site-title { color: #e8eaed; }
-#sidebar .site-subtitle { color: #9aa0a6; }
-#sidebar .nav-link { color: #b0b6be; }
-#sidebar .nav-link:hover,
+/* ---------- 全局背景 ---------- */
+html {
+  background-color: #f4f6f9;
+}
+
+/* ---------- 侧边栏：深蓝靛 ---------- */
+#sidebar {
+  background-color: var(--sidebar-bg);
+  color: #c8cdd8;
+}
+
+#sidebar .site-title {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+#sidebar .site-subtitle {
+  color: #8899b4;
+}
+
+#sidebar .nav-link {
+  color: #a4b1cc;
+  border-radius: 6px;
+  margin: 2px 8px;
+  padding: 8px 16px;
+  transition: background 0.2s, color 0.2s;
+}
+#sidebar .nav-link:hover {
+  color: #ffffff;
+  background-color: var(--sidebar-hover);
+}
 #sidebar .nav-item.active .nav-link {
   color: #ffffff;
-  background-color: rgba(255,255,255,0.12);
-}
-#sidebar .sidebar-bottom a { color: #8b919a; }
-#sidebar .sidebar-bottom a:hover { color: #ffffff; }
-
-/* ---------- 2. 莫兰迪灰绿点缀色 ---------- */
-:root {
-  --link-color: #7a8b7a;
-  --link-hover-color: #5b6b5b;
-}
-
-/* ---------- 3. 文章区微妙留白与阴影 ---------- */
-html {
-  background-color: #f8f9fa;
-}
-
-#main-wrapper .post-preview {
-  background: #ffffff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  border-radius: 8px;
-  padding: 1.8rem;
-  margin-bottom: 1.8rem;
-}
-
-/* ---------- 4. 字体调整（与官方 v7.4+ 同步） ---------- */
-body {
-  font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: Lato, 'Microsoft Yahei', sans-serif;
+  background-color: var(--sidebar-hover);
   font-weight: 600;
 }
 
-code, pre {
-  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+#sidebar .sidebar-bottom a {
+  color: #8899b4;
+  transition: color 0.2s;
 }
-/* ========== 图片排版优化 ========== */
-/* 图片居中 + 响应式 + 圆角 */
+#sidebar .sidebar-bottom a:hover {
+  color: #ffffff;
+}
+
+/* 头像加阴影 */
+#sidebar .site-avatar img {
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,255,255,0.12);
+}
+
+/* ---------- 链接颜色 ---------- */
+a {
+  color: var(--accent);
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ---------- 文章卡片 ---------- */
+#main-wrapper .post-preview {
+  background: #ffffff;
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-radius);
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e8ecf1;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#main-wrapper .post-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.post-preview .post-title {
+  font-weight: 700;
+}
+
+/* ---------- 文章内容区 ---------- */
+#main-wrapper .post > article,
+#post-wrapper .post-content {
+  background: #ffffff;
+  border-radius: var(--card-radius);
+  padding: 2rem 2.4rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid #e8ecf1;
+}
+
+/* 文章标题底部微调 */
+.post-title {
+  color: #2d3748;
+}
+
+/* ---------- 代码块 ---------- */
+pre, code {
+  font-family: "Cascadia Code", "SF Mono", Monaco, Consolas, "Microsoft Yahei", monospace;
+}
+
+code {
+  color: #5b7fbc;
+  background: #eef3fa;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.9em;
+}
+
+pre {
+  border-radius: 8px;
+  box-shadow: none;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* ---------- 分隔线 ---------- */
+hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+/* ---------- 引用块 ---------- */
+blockquote {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-light);
+  color: #4a5568;
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+}
+
+/* ---------- 按钮 / 标签 ---------- */
+.post-tags .post-tag {
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+.post-tags .post-tag:hover {
+  background: #dce6f5;
+  color: var(--accent-hover);
+}
+
+/* ---------- 图片排版 ---------- */
 .post-content img {
   display: block;
   max-width: 100%;
   height: auto;
   margin: 1.5rem auto;
-  border-radius: 6px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-/* 图片标题（居中灰色小字） */
 .image-caption {
   text-align: center;
   font-size: 0.875rem;
@@ -71,8 +182,48 @@ code, pre {
   margin-bottom: 1.5rem;
 }
 
-/* 图片 + 标题整体留白 */
 figure {
   margin: 1.5rem 0;
   text-align: center;
 }
+
+/* ---------- 表格 ---------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+th {
+  background: #eef3fa;
+  color: #2d3748;
+  font-weight: 600;
+  padding: 10px 16px;
+}
+td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+/* ---------- TOC 目录 ---------- */
+#toc-bar {
+  border-left: 2px solid #e2e8f0;
+}
+
+/* ---------- 顶部导航栏圆角微调 ---------- */
+#topbar-wrapper {
+  background-color: rgba(244,246,249,0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ---------- 滚动条（WebKit） ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #c4cfde;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: #a0adbd; }
