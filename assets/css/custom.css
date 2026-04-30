@@ -1,30 +1,36 @@
 /* ==========================================
-   Chirpy 自定义样式 — 日系靛蓝
-   基于实际 HTML 结构重写 (Chirpy v7.5)
+   Chirpy 自定义样式 — 日系靛蓝 (v2)
+   配色：深蓝侧边栏 + 靛蓝点缀 + 卡片式布局
+   兼容 Chirpy v7.5，所有选择器基于实际 DOM 验证
    ========================================== */
 
-/* ---------- CSS 变量覆写（亮色模式） ---------- */
+/* ---------- 1. 全局变量覆写 ---------- */
 html[data-mode="light"] {
-  --link-color:              #4a6fa5;
-  --link-underline-color:    #d6dde8;
-  --blockquote-border-color: #c8d4e2;
-  --blockquote-text-color:   #5a6c84;
-  --card-bg:                 #ffffff;
-  --card-hover-bg:           #eef2f7;
-  --card-shadow:             0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  --tag-border:              #d6dde8;
-  --tag-hover:               #e4eaf3;
-  --search-tag-bg:           #f4f6f9;
-  --inline-code-bg:          #eef2f7;
-  --highlight-bg-color:      #f4f6fa;
-  --timeline-node-bg:        #b0bfd1;
+  --link-color:               #4a6fa5;
+  --link-underline-color:     #d6dde8;
+  --blockquote-border-color:  #c8d4e2;
+  --blockquote-text-color:    #5a6c84;
+  --card-bg:                  #ffffff;
+  --card-hover-bg:            #eef2f7;
+  --card-shadow:              0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --tag-border:               #d6dde8;
+  --tag-hover:                #e4eaf3;
+  --search-tag-bg:            #f4f6f9;
+  --inline-code-bg:           #eef2f7;
+  --highlight-bg-color:       #f4f6fa;
+  --timeline-node-bg:         #b0bfd1;
 }
 
-/* ---------- 侧边栏：深蓝靛 ---------- */
+/* 选中文字颜色 */
+::selection {
+  background: rgba(74,111,165,0.2);
+}
+
+/* ---------- 2. 侧边栏：深蓝靛 ---------- */
 #sidebar {
   background-color: #1c2333 !important;
-  color: #c8cdd8;
 }
+
 #sidebar .site-title {
   color: #ffffff;
   font-weight: 700;
@@ -32,45 +38,49 @@ html[data-mode="light"] {
 #sidebar .site-subtitle {
   color: #8899b4;
 }
+
+/* 导航项 */
 #sidebar .nav-link {
   color: #a4b1cc;
   border-radius: 6px;
   transition: background 0.2s, color 0.2s;
 }
-#sidebar .nav-link:hover {
+#sidebar .nav-link:hover,
+#sidebar .nav-item.active .nav-link {
   color: #ffffff;
   background-color: rgba(91,127,188,0.15);
 }
 #sidebar .nav-item.active .nav-link {
-  color: #ffffff;
-  background-color: rgba(91,127,188,0.15);
   font-weight: 600;
 }
-#sidebar .sidebar-bottom a {
-  color: #8899b4;
-}
-#sidebar .sidebar-bottom a:hover {
-  color: #ffffff;
-}
+
+/* 底部按钮 */
+#sidebar .sidebar-bottom a,
 #sidebar .sidebar-bottom #mode-toggle {
   color: #8899b4;
+  transition: background 0.2s, color 0.2s;
+}
+#sidebar .sidebar-bottom a:hover,
+#sidebar .sidebar-bottom #mode-toggle:hover {
+  color: #ffffff;
 }
 
 /* 头像 */
 #sidebar #avatar img {
   border-radius: 50%;
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.15), 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.12), 0 2px 8px rgba(0,0,0,0.3);
 }
 
-/* ---------- 链接 ---------- */
+/* ---------- 3. 页面链接 ---------- */
 a {
   color: #4a6fa5;
+  transition: color 0.2s;
 }
 a:hover {
   color: #35578a;
 }
 
-/* ---------- 文章卡片 ---------- */
+/* ---------- 4. 首页文章卡片 ---------- */
 article.card-wrapper.card {
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
@@ -87,8 +97,8 @@ article.card-wrapper.card:hover {
   color: #2d3748;
 }
 
-/* ---------- 正文区域（单篇文章页） ---------- */
-#post-wrapper article {
+/* ---------- 5. 单篇文章页 ---------- */
+main > article {
   background: #ffffff;
   border-radius: 10px;
   padding: 2rem 2.4rem;
@@ -96,7 +106,20 @@ article.card-wrapper.card:hover {
   border: 1px solid #e8ecf1;
 }
 
-/* ---------- 代码 ---------- */
+/* 文章内标题 */
+.content h1, .content h2, .content h3, .content h4 {
+  color: #2d3748;
+}
+.content h2 {
+  border-bottom: 2px solid #eef2f7;
+  padding-bottom: 0.4rem;
+  margin-top: 2rem;
+}
+.content h1:first-child {
+  margin-top: 0;
+}
+
+/* ---------- 6. 代码 ---------- */
 code {
   color: #4a6fa5;
   background: #eef2f7;
@@ -106,37 +129,76 @@ code {
 }
 pre {
   border-radius: 8px;
+  border: 1px solid #e8ecf1;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
 }
 
-/* ---------- 引用块 ---------- */
+/* ---------- 7. 引用块 ---------- */
 blockquote {
   border-left: 3px solid #4a6fa5;
   background: #eef2f7;
   color: #4a5568;
   border-radius: 0 6px 6px 0;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
 }
 
-/* ---------- 标签 ---------- */
-.post-tag {
+/* ---------- 8. 标签 ---------- */
+.post-tag.btn {
   color: #4a6fa5 !important;
   background: #eef2f7 !important;
   border-color: #d6dde8 !important;
   transition: background 0.2s;
 }
-.post-tag:hover {
+.post-tag.btn:hover {
   background: #dce6f5 !important;
   color: #35578a !important;
 }
 
-/* ---------- 顶部导航栏毛玻璃 ---------- */
+/* ---------- 9. 相关文章卡片 ---------- */
+#related-posts .post-preview.card {
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  border: 1px solid #e8ecf1;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#related-posts .post-preview.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+/* ---------- 10. 前后导航按钮 ---------- */
+.post-navigation .btn {
+  color: #4a6fa5 !important;
+  border-color: #d6dde8 !important;
+  background: #ffffff !important;
+  border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.post-navigation .btn:hover {
+  background: #eef2f7 !important;
+  border-color: #4a6fa5 !important;
+}
+.post-navigation .btn.disabled {
+  color: #bbb !important;
+  border-color: #eee !important;
+  background: #fafafa !important;
+}
+
+/* ---------- 11. 顶栏毛玻璃 ---------- */
 #topbar-wrapper {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.82) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* ---------- 图片 ---------- */
-.post-content img {
+/* ---------- 12. 图片 ---------- */
+.post-content img,
+.content img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -158,11 +220,55 @@ figure {
   text-align: center;
 }
 
-/* ---------- 滚动条 ---------- */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
+/* ---------- 13. 表格 ---------- */
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.content th {
+  background: #eef2f7;
+  color: #2d3748;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-bottom: 2px solid #d6dde8;
+}
+.content td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+/* ---------- 14. 滚动条 ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 ::-webkit-scrollbar-thumb {
   background: #c4cfde;
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover { background: #a0adbd; }
+::-webkit-scrollbar-thumb:hover {
+  background: #a0adbd;
+}
+
+/* ---------- 15. 返回顶部按钮 ---------- */
+#back-to-top {
+  border-radius: 50% !important;
+  background: #4a6fa5 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(74,111,165,0.3) !important;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+#back-to-top:hover {
+  background: #35578a !important;
+  box-shadow: 0 4px 12px rgba(74,111,165,0.45) !important;
+}
+
+/* ---------- 16. 页脚链接 ---------- */
+footer a {
+  color: #4a6fa5;
+}
