@@ -1,387 +1,560 @@
 /* ==========================================
-   Chirpy 自定义样式 — 深海钴蓝
-   配色：深海蓝侧边栏 + 钴蓝点缀 + 卡片式布局
-   兼容 Chirpy v7.5，所有选择器基于实际 DOM 验证
+   Chirpy 自定义样式 — 现代翻新
+   配色：深邃夜空 + 电光蓝点缀 + 微渐变
+   兼容 Chirpy v7.5，基于 Bootstrap 5 工具类
    ========================================== */
 
-/* ---------- 1. 全局变量覆写 ---------- */
+/* ==========================================
+   0. CSS 变量覆写
+   ========================================== */
+:root {
+  --accent:        #4f8cff;
+  --accent-deep:   #3568d4;
+  --accent-light:  #eaf1ff;
+  --bg-page:       #f5f7fa;
+  --bg-card:       #ffffff;
+  --text-primary:  #1a1f2e;
+  --text-secondary:#5f6b7a;
+  --text-muted:    #8b95a5;
+  --border:        #e3e8ef;
+  --border-light:  #f0f2f6;
+  --shadow-sm:     0 1px 3px rgba(0,0,0,.04);
+  --shadow-md:     0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:     0 8px 32px rgba(0,0,0,.08);
+  --radius-sm:     8px;
+  --radius-md:     14px;
+  --radius-lg:     20px;
+}
+
 html[data-mode="light"] {
-  --link-color:               #3a7bd5;
-  --link-underline-color:     #ccd8e8;
-  --blockquote-border-color:  #c0cfe2;
+  --link-color:               var(--accent);
+  --link-underline-color:     #d0ddf6;
+  --blockquote-border-color:  #bccded;
   --blockquote-text-color:    #4a5568;
-  --card-bg:                  #ffffff;
-  --card-hover-bg:            #edf3fa;
-  --card-shadow:              0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  --tag-border:               #ccd8e8;
-  --tag-hover:                #e0eaf5;
   --search-tag-bg:            #f4f7fb;
-  --inline-code-bg:           #edf3fa;
+  --inline-code-bg:           #eaf1ff;
   --highlight-bg-color:       #f4f7fb;
   --timeline-node-bg:         #a0b8d8;
 }
 
-/* 选中文字颜色 */
 ::selection {
-  background: rgba(58,123,213,0.2);
+  background: rgba(79,140,255,.18);
 }
 
-/* ---------- 2. 侧边栏：深海蓝 ---------- */
+/* ==========================================
+   1. 全局基础
+   ========================================== */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans Pro', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================
+   2. 侧边栏 — 深邃夜空色
+   ========================================== */
 #sidebar {
-  background-color: #0d1b2a !important;
+  background: linear-gradient(180deg, #0a1628 0%, #111f35 50%, #152238 100%) !important;
+  border-right: 1px solid rgba(79,140,255,.08);
 }
 
 #sidebar .site-title,
 #sidebar .site-title:hover {
-  color: #e8f0fe;
-  font-weight: 700;
+  color: #eef4ff;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 #sidebar .site-subtitle {
-  color: #7b9bc0;
+  color: #6d8ab8;
+  font-size: .85rem;
+}
+
+#sidebar #avatar img {
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(79,140,255,.15), 0 4px 20px rgba(0,0,0,.35);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1),
+              box-shadow .35s ease;
+}
+#sidebar #avatar img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 3px rgba(79,140,255,.3), 0 6px 26px rgba(0,0,0,.4);
 }
 
 /* 导航项 */
 #sidebar .nav-link {
-  color: #9bb8da;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
+  color: #8aabd4;
+  border-radius: var(--radius-sm);
+  margin: 1px 8px;
+  padding: 9px 14px;
+  font-weight: 500;
+  transition: all .2s ease;
 }
-#sidebar .nav-link:hover,
-#sidebar .nav-item.active .nav-link {
-  color: #e8f0fe;
-  background-color: rgba(58,123,213,0.18);
+#sidebar .nav-link:hover {
+  color: #eef4ff;
+  background: rgba(79,140,255,.12);
 }
 #sidebar .nav-item.active .nav-link {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(79,140,255,.22), rgba(79,140,255,.08));
   font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
 /* 底部按钮 */
 #sidebar .sidebar-bottom a,
 #sidebar .sidebar-bottom #mode-toggle {
-  color: #7b9bc0;
-  transition: background 0.2s, color 0.2s;
+  color: #6d8ab8;
+  transition: all .2s;
 }
 #sidebar .sidebar-bottom a:hover,
 #sidebar .sidebar-bottom #mode-toggle:hover {
-  color: #e8f0fe;
+  color: #eef4ff;
 }
 
-/* 头像 */
-#sidebar #avatar img {
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px rgba(232,240,254,0.12), 0 2px 8px rgba(0,0,0,0.3);
+/* ==========================================
+   3. 顶栏 — 毛玻璃
+   ========================================== */
+#topbar-wrapper {
+  background: rgba(255,255,255,.78) !important;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 1px 3px rgba(0,0,0,.03);
 }
 
-/* ---------- 3. 页面链接 ---------- */
+/* ==========================================
+   4. 链接
+   ========================================== */
 a {
-  color: #3a7bd5;
-  transition: color 0.2s;
+  color: var(--accent);
+  transition: color .2s;
 }
-a:hover {
-  color: #2b5fa8;
+a:hover { color: var(--accent-deep); }
+
+/* ==========================================
+   5. 首页文章卡片 — 现代卡片风
+   ========================================== */
+#post-list .card-wrapper.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1),
+              box-shadow .3s ease,
+              border-color .3s ease;
+}
+#post-list .card-wrapper.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(79,140,255,.15);
 }
 
-/* ---------- 4. 首页文章卡片 ---------- */
-article.card-wrapper.card {
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  border: 1px solid #e2e8f0;
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-bottom: 1.2rem;
+#post-list .card-body {
+  position: relative;
+  padding: 1.8rem 2rem;
 }
-article.card-wrapper.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-}
-.card .card-title {
+
+/* 卡片标题 */
+#post-list .card-title {
+  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #1a2a3a;
+  line-height: 1.35;
+  color: var(--text-primary);
+  transition: color .2s;
+}
+#post-list .card-wrapper.card:hover .card-title {
+  color: var(--accent);
 }
 
-/* ---------- 5. 单篇文章页 ---------- */
+/* 卡片描述 */
+#post-list .card-text {
+  font-size: .95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* 日期标签 — 日式小标 */
+#post-list .post-meta time[data-ts] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+#post-list .post-meta time[data-ts]::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* 分类 / 标签小标 */
+#post-list .post-meta .categories,
+#post-list .post-meta .tags {
+  font-size: .82rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================
+   6. 文章详情页
+   ========================================== */
 main > article {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 2rem 2.4rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  border: 1px solid #e2e8f0;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 2.4rem 2.8rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+@media (max-width: 768px) {
+  main > article {
+    padding: 1.5rem 1.2rem;
+    border-radius: var(--radius-md);
+  }
 }
 
 /* 文章内标题 */
-.content h1, .content h2, .content h3, .content h4 {
-  color: #1a2a3a;
+.content h1, .content h2, .content h3, .content h4,
+h1, h2, h3, h4 {
+  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--text-primary);
 }
-.content h2 {
-  border-bottom: 2px solid #edf3fa;
-  padding-bottom: 0.4rem;
-  margin-top: 2rem;
+h1 { font-size: 1.95rem; margin-bottom: 1.4rem; }
+h2 {
+  font-size: 1.55rem;
+  border-bottom: 2px solid var(--border-light);
+  padding-bottom: .5rem;
+  margin-top: 2.4rem;
+  margin-bottom: 1rem;
 }
-.content h1:first-child {
-  margin-top: 0;
+h3 { font-size: 1.25rem; margin-top: 1.8rem; }
+h4 { font-size: 1.1rem; margin-top: 1.5rem; }
+
+.content h1:first-child { margin-top: 0; }
+
+/* 段落 */
+.content p, .post-content p {
+  margin-bottom: 1.2rem;
+  line-height: 1.9;
 }
 
-/* ---------- 6. 代码 ---------- */
+/* 列表 */
+.content ul, .content ol,
+.post-content ul, .post-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.content li, .post-content li {
+  margin-bottom: .45rem;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   7. 代码块
+   ========================================== */
 code {
-  color: #3a7bd5;
-  background: #edf3fa;
-  border-radius: 4px;
-  padding: 2px 5px;
-  font-size: 0.9em;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 5px;
+  padding: 2px 7px;
+  font-size: .89em;
+  font-family: 'Cascadia Code', 'SF Mono', 'Fira Code', Monaco, Consolas, monospace;
 }
 pre {
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
-pre code {
-  background: none;
-  padding: 0;
-  color: inherit;
-}
+pre code { background: none; padding: 0; color: inherit; font-size: .84rem; line-height: 1.65; }
 
-/* ---------- 7. 引用块 ---------- */
+/* ==========================================
+   8. 引用块
+   ========================================== */
 blockquote {
-  border-left: 3px solid #3a7bd5;
-  background: #edf3fa;
-  color: #4a5568;
-  border-radius: 0 6px 6px 0;
-  padding: 1rem 1.2rem;
-  margin: 1.2rem 0;
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(90deg, var(--accent-light) 0%, rgba(234,241,255,.3) 100%);
+  color: var(--text-secondary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 1rem 1.4rem;
+  margin: 1.4rem 0;
 }
 
-/* ---------- 8. 标签 ---------- */
+/* ==========================================
+   9. 标签
+   ========================================== */
 .post-tag.btn {
-  color: #3a7bd5 !important;
-  background: #edf3fa !important;
-  border-color: #ccd8e8 !important;
-  transition: background 0.2s;
+  color: var(--accent) !important;
+  background: var(--accent-light) !important;
+  border: 1px solid rgba(79,140,255,.18) !important;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: .82rem;
+  font-weight: 500;
+  transition: all .25s;
 }
 .post-tag.btn:hover {
-  background: #e0eaf5 !important;
-  color: #2b5fa8 !important;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep)) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(79,140,255,.25);
 }
 
-/* ---------- 9. 相关文章卡片 ---------- */
+/* ==========================================
+   10. 相关文章卡片
+   ========================================== */
 #related-posts .post-preview.card {
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  border: 1px solid #e2e8f0;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
 }
 #related-posts .post-preview.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
-/* ---------- 10. 前后导航按钮 ---------- */
+/* ==========================================
+   11. 前后导航
+   ========================================== */
 .post-navigation .btn {
-  color: #3a7bd5 !important;
-  border-color: #ccd8e8 !important;
-  background: #ffffff !important;
-  border-radius: 8px;
-  transition: background 0.2s, border-color 0.2s;
+  color: var(--accent) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--bg-card) !important;
+  border-radius: var(--radius-sm);
+  padding: .65rem 1.3rem;
+  font-weight: 500;
+  transition: all .25s;
 }
 .post-navigation .btn:hover {
-  background: #edf3fa !important;
-  border-color: #3a7bd5 !important;
+  background: var(--accent-light) !important;
+  border-color: var(--accent) !important;
+  transform: translateY(-1px);
 }
 .post-navigation .btn.disabled {
-  color: #bbb !important;
-  border-color: #eee !important;
-  background: #fafafa !important;
+  color: #c0c7d0 !important;
+  border-color: var(--border-light) !important;
+  background: #f8f9fc !important;
 }
 
-/* ---------- 11. 顶栏毛玻璃 ---------- */
-#topbar-wrapper {
-  background: rgba(255,255,255,0.82) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* ---------- 12. 图片 ---------- */
+/* ==========================================
+   12. 图片
+   ========================================== */
 .post-content img,
 .content img {
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 1.5rem auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin: 1.6rem auto;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
+.post-content img:hover,
+.content img:hover {
+  transform: scale(1.01);
+  box-shadow: var(--shadow-lg);
+}
+
+figure { margin: 1.5rem 0; text-align: center; }
 
 .image-caption {
   text-align: center;
-  font-size: 0.875rem;
-  color: #8b919a;
-  margin-top: 0.25rem;
+  font-size: .85rem;
+  color: var(--text-muted);
+  margin-top: .25rem;
   margin-bottom: 1.5rem;
 }
 
-figure {
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-/* ---------- 13. 表格 ---------- */
+/* ==========================================
+   13. 表格
+   ========================================== */
 .content table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
   margin: 1.2rem 0;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
 }
 .content th {
-  background: #edf3fa;
-  color: #1a2a3a;
-  font-weight: 600;
-  padding: 10px 16px;
-  border-bottom: 2px solid #ccd8e8;
+  background: linear-gradient(180deg, #eef3fb, #e3ebf7);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: .88rem;
+  padding: 12px 18px;
+  border-bottom: 2px solid rgba(79,140,255,.18);
 }
 .content td {
-  padding: 10px 16px;
-  border-bottom: 1px solid #eef3f8;
+  padding: 11px 18px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: .93rem;
 }
-
-/* ---------- 14. 滚动条 ---------- */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #c0cfde;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #a0b4c8;
-}
-
-/* ---------- 15. 返回顶部按钮 ---------- */
-#back-to-top {
-  border-radius: 50% !important;
-  background: #3a7bd5 !important;
-  color: #ffffff !important;
-  box-shadow: 0 2px 8px rgba(58,123,213,0.3) !important;
-  transition: background 0.2s, box-shadow 0.2s;
-}
-#back-to-top:hover {
-  background: #2b5fa8 !important;
-  box-shadow: 0 4px 12px rgba(58,123,213,0.45) !important;
-}
-
-/* ---------- 16. 页脚链接 ---------- */
-footer a {
-  color: #3a7bd5;
+.content tr:last-child td { border-bottom: none; }
+.content tbody tr:hover td {
+  background: rgba(79,140,255,.03);
 }
 
 /* ==========================================
-   17. 字体与排版优化
+   14. 滚动条
    ========================================== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #c8d4e3;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: #a3b5ce; }
 
-/* 全局基础字体 */
-body {
-  font-family: 'Source Sans Pro', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
-  font-size: 16px;
-  line-height: 1.75;
-  color: #2d333b;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ==========================================
+   15. 返回顶部
+   ========================================== */
+#back-to-top {
+  border-radius: 50% !important;
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep)) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 14px rgba(79,140,255,.35) !important;
+  transition: all .3s cubic-bezier(.34,1.56,.64,1);
+}
+#back-to-top:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 20px rgba(79,140,255,.5) !important;
 }
 
-/* 标题字体 */
-h1, h2, h3, h4, h5, h6,
-.card-title,
-.post-title {
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+/* ==========================================
+   16. 页脚
+   ========================================== */
+footer { font-size: .85rem; }
+footer a { color: var(--accent); }
+
+/* ==========================================
+   17. 右侧面板 — 软卡片
+   ========================================== */
+#panel-wrapper .access {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 1.4rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+#panel-wrapper .panel-heading {
+  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  line-height: 1.35;
-  color: #1a2a3a;
+  font-size: .92rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  margin-bottom: .8rem;
 }
 
-h1 { font-size: 1.85rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.25rem; }
-h4 { font-size: 1.1rem; }
-
-/* 正文段落 */
-.post-content p,
-.content p {
-  margin-bottom: 1.2rem;
-  line-height: 1.85;
-}
-
-/* 正文列表 */
-.post-content ul,
-.post-content ol,
-.content ul,
-.content ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.2rem;
-}
-.post-content li,
-.content li {
-  margin-bottom: 0.4rem;
-  line-height: 1.8;
-}
-
-/* 文章描述 / 摘要 */
-.post-desc,
-.card-text {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #5a6470;
-}
-
-/* 文章元信息 */
-.post-meta {
-  font-size: 0.875rem;
-  color: #7c8896;
-}
-
-/* 代码字体 */
-code, pre, kbd, samp {
-  font-family: 'Cascadia Code', 'SF Mono', 'Fira Code', Monaco, Consolas, 'Microsoft YaHei', monospace;
-  font-size: 0.88rem;
-}
-
-pre code {
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-/* 加粗优化 */
-strong, b {
-  font-weight: 700;
-  color: #1a2a3a;
-}
-
-/* 分隔线 */
+/* ==========================================
+   18. 分隔线
+   ========================================== */
 hr {
   border: none;
-  border-top: 1px solid #e2e8f0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
   margin: 2rem 0;
 }
 
-/* 侧边栏字体微调 */
-#sidebar {
-  font-size: 0.95rem;
-  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
-}
-#sidebar .nav-link span {
-  font-size: 0.92rem;
-  letter-spacing: 0.02em;
-}
-
-/* 首页卡片标题字号 */
-.card .card-title {
-  font-size: 1.2rem;
+/* ==========================================
+   19. 加粗 / 强调
+   ========================================== */
+strong, b {
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 /* ==========================================
-   18. 隐藏 Twitter 图标
+   20. 搜索框
    ========================================== */
+#search-input {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: border-color .2s, box-shadow .2s;
+}
+#search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79,140,255,.12);
+  outline: none;
+}
 
+/* ==========================================
+   21. 隐藏 Twitter 图标
+   ========================================== */
 #sidebar .sidebar-bottom a[aria-label="twitter"] {
   display: none !important;
 }
+
+/* ==========================================
+   22. 响应式微调
+   ========================================== */
+@media (max-width: 768px) {
+  body { font-size: 15px; }
+
+  #post-list .card-body {
+    padding: 1.3rem 1.2rem;
+  }
+  #post-list .card-title {
+    font-size: 1.1rem;
+  }
+
+  #sidebar #avatar img {
+    width: 88px; height: 88px;
+  }
+
+  #panel-wrapper .access {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  #topbar-wrapper {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* ==========================================
+   23. 空状态 / 加载微调
+   ========================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#post-list .card-wrapper.card {
+  animation: fadeInUp .5s ease both;
+}
+#post-list .card-wrapper.card:nth-child(1) { animation-delay: 0s; }
+#post-list .card-wrapper.card:nth-child(2) { animation-delay: .08s; }
+#post-list .card-wrapper.card:nth-child(3) { animation-delay: .16s; }
+#post-list .card-wrapper.card:nth-child(4) { animation-delay: .24s; }
+#post-list .card-wrapper.card:nth-child(5) { animation-delay: .32s; }
+#post-list .card-wrapper.card:nth-child(6) { animation-delay: .40s; }
+#post-list .card-wrapper.card:nth-child(7) { animation-delay: .48s; }
+#post-list .card-wrapper.card:nth-child(8) { animation-delay: .56s; }
