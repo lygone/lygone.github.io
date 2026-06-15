@@ -147,16 +147,37 @@ cd C:\frp
 frpc.exe -c frpc.toml
 ```
 
-看到 `start proxy success` → 通了。
+看到 `start proxy success` → 通了，**直接最小化窗口锁屏走人**，到家就能连。
 
-**注册为 Windows 服务（后台静默运行）：**
+**想让 frpc 开机自启不弹窗，用 nssm 注册为服务：**
+
+下载 [nssm](https://nssm.cc/download) → 解压出 `nssm.exe` 丢到 `D:\frp\` 目录，管理员 CMD 执行：
 
 ```cmd
-sc create frpc binPath= "C:\frp\frpc.exe -c C:\frp\frpc.toml" start= auto
-sc start frpc
+D:\frp\nssm.exe install frpc
 ```
 
-> **不想装服务？** 新建 `.vbs` 文件放启动项里，开机自动无窗口启动：
+弹出窗口填三项：
+- **Path**: `D:\frp\frpc.exe`
+- **Startup directory**: `D:\frp`
+- **Arguments**: `-c D:\frp\frpc.toml`
+
+点 Install service，然后：
+
+```cmd
+nssm start frpc
+```
+
+以后开机自动后台运行，无窗口无图标。
+
+> **想更省事？** 在桌面新建一个 `启动frp.bat` 快捷方式，内容为：
+> ```bat
+> @echo off
+> cd /d D:\frp
+> frpc.exe -c frpc.toml
+> pause
+> ```
+> 双击启动，窗口显示 `start proxy success` 即为通。
 > ```vbs
 > CreateObject("WScript.Shell").Run "C:\frp\frpc.exe -c C:\frp\frpc.toml", 0, False
 > ```
