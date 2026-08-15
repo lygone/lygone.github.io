@@ -307,23 +307,23 @@ main > article {
 
 /* 文章内标题 */
 .content h1, .content h2, .content h3, .content h4,
-h1, h2, h3, h4 {
+.post-content h1, .post-content h2, .post-content h3, .post-content h4 {
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.35;
   color: var(--text-primary);
 }
-h1 { font-size: 1.95rem; margin-bottom: 1.4rem; }
-h2 {
+.content h1 { font-size: 1.95rem; margin-bottom: 1.4rem; }
+.content h2 {
   font-size: 1.55rem;
   border-bottom: 2px solid var(--border-light);
   padding-bottom: .5rem;
   margin-top: 2.4rem;
   margin-bottom: 1rem;
 }
-h3 { font-size: 1.25rem; margin-top: 1.8rem; }
-h4 { font-size: 1.1rem; margin-top: 1.5rem; }
+.content h3 { font-size: 1.25rem; margin-top: 1.8rem; }
+.content h4 { font-size: 1.1rem; margin-top: 1.5rem; }
 
 .content h1:first-child { margin-top: 0; }
 
@@ -509,6 +509,18 @@ figure { margin: 1.5rem 0; text-align: center; }
 /* ==========================================
    14. 滚动条
    ========================================== */
+/* Firefox（WebKit 内核浏览器用下面的 ::-webkit-scrollbar） */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #c8d4e3 transparent;
+}
+:root[data-bs-theme="dark"] {
+  scrollbar-color: #2c3a4d transparent;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-bs-theme]) { scrollbar-color: #2c3a4d transparent; }
+}
+
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
