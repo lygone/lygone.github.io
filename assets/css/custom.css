@@ -26,7 +26,7 @@
   --radius-lg:     20px;
 }
 
-html[data-mode="light"] {
+html[data-bs-theme="light"] {
   --link-color:               var(--accent);
   --link-underline-color:     #d0ddf6;
   --blockquote-border-color:  #bccded;
@@ -37,8 +37,83 @@ html[data-mode="light"] {
   --timeline-node-bg:         #a0b8d8;
 }
 
+/* ==========================================
+   0b. 暗色模式 — 深邃夜空变体
+   （跟随 Chirpy v7.6 的 data-bs-theme 机制）
+   ========================================== */
+:root[data-bs-theme="dark"] {
+  color-scheme: dark;
+  --accent:        #66a0ff;
+  --accent-deep:   #3f7ae0;
+  --accent-light:  rgba(79,140,255,.16);
+  --bg-page:       #0e1521;
+  --bg-card:       #17202e;
+  --text-primary:  #e8eef7;
+  --text-secondary:#a5b2c4;
+  --text-muted:    #7e8b9d;
+  --border:        #2a3648;
+  --border-light:  #202c3d;
+  --link-color:               var(--accent);
+  --link-underline-color:     rgba(102,160,255,.35);
+  --blockquote-border-color:  #33508a;
+  --blockquote-text-color:    #c6d0e0;
+  --search-tag-bg:            rgba(79,140,255,.1);
+  --inline-code-bg:           rgba(79,140,255,.15);
+  --highlight-bg-color:       #131c2b;
+  --timeline-node-bg:         #3a4a63;
+}
+
+/* 主题 JS 加载失败时的兜底：跟随系统偏好 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-bs-theme]) {
+    color-scheme: dark;
+    --accent:        #66a0ff;
+    --accent-deep:   #3f7ae0;
+    --accent-light:  rgba(79,140,255,.16);
+    --bg-page:       #0e1521;
+    --bg-card:       #17202e;
+    --text-primary:  #e8eef7;
+    --text-secondary:#a5b2c4;
+    --text-muted:    #7e8b9d;
+    --border:        #2a3648;
+    --border-light:  #202c3d;
+    --link-color:               var(--accent);
+    --link-underline-color:     rgba(102,160,255,.35);
+    --blockquote-border-color:  #33508a;
+    --blockquote-text-color:    #c6d0e0;
+    --search-tag-bg:            rgba(79,140,255,.1);
+    --inline-code-bg:           rgba(79,140,255,.15);
+    --highlight-bg-color:       #131c2b;
+    --timeline-node-bg:         #3a4a63;
+  }
+
+  /* 组件级暗色修正（仅当无 data-bs-theme 属性时生效） */
+  :root:not([data-bs-theme]) #topbar-wrapper {
+    background: rgba(14,21,33,.78) !important;
+    border-bottom-color: var(--border-light);
+  }
+  :root:not([data-bs-theme]) ::selection { background: rgba(79,140,255,.35); }
+  :root:not([data-bs-theme]) blockquote {
+    background: linear-gradient(90deg, var(--accent-light) 0%, rgba(79,140,255,.04) 100%);
+  }
+  :root:not([data-bs-theme]) .post-navigation .btn.disabled {
+    color: #5c6878 !important;
+    background: #141c29 !important;
+  }
+  :root:not([data-bs-theme]) .content th {
+    background: linear-gradient(180deg, #1d2a3d, #22304a);
+  }
+  :root:not([data-bs-theme]) .content tbody tr:hover td { background: rgba(79,140,255,.07); }
+  :root:not([data-bs-theme]) ::-webkit-scrollbar-thumb { background: #2c3a4d; }
+  :root:not([data-bs-theme]) ::-webkit-scrollbar-thumb:hover { background: #3a4a63; }
+  :root:not([data-bs-theme]) #search-input { background: #141d2b; color: var(--text-primary); }
+}
+
 ::selection {
   background: rgba(79,140,255,.18);
+}
+:root[data-bs-theme="dark"] ::selection {
+  background: rgba(79,140,255,.35);
 }
 
 /* ==========================================
@@ -95,11 +170,11 @@ body {
   font-weight: 500;
   transition: all .2s ease;
 }
-#sidebar .nav-link:hover {
+#sidebar ul li.nav-item a.nav-link:hover {
   color: #eef4ff;
   background: rgba(79,140,255,.12);
 }
-#sidebar .nav-item.active .nav-link {
+#sidebar ul li.nav-item.active .nav-link {
   color: #fff;
   background: linear-gradient(135deg, rgba(79,140,255,.22), rgba(79,140,255,.08));
   font-weight: 600;
@@ -126,6 +201,10 @@ body {
   -webkit-backdrop-filter: blur(14px) saturate(180%);
   border-bottom: 1px solid var(--border-light);
   box-shadow: 0 1px 3px rgba(0,0,0,.03);
+}
+:root[data-bs-theme="dark"] #topbar-wrapper {
+  background: rgba(14,21,33,.78) !important;
+  border-bottom-color: var(--border-light);
 }
 
 /* ==========================================
@@ -294,6 +373,9 @@ blockquote {
   padding: 1rem 1.4rem;
   margin: 1.4rem 0;
 }
+:root[data-bs-theme="dark"] blockquote {
+  background: linear-gradient(90deg, var(--accent-light) 0%, rgba(79,140,255,.04) 100%);
+}
 
 /* ==========================================
    9. 标签
@@ -353,6 +435,10 @@ blockquote {
   border-color: var(--border-light) !important;
   background: #f8f9fc !important;
 }
+:root[data-bs-theme="dark"] .post-navigation .btn.disabled {
+  color: #5c6878 !important;
+  background: #141c29 !important;
+}
 
 /* ==========================================
    12. 图片
@@ -404,6 +490,9 @@ figure { margin: 1.5rem 0; text-align: center; }
   padding: 12px 18px;
   border-bottom: 2px solid rgba(79,140,255,.18);
 }
+:root[data-bs-theme="dark"] .content th {
+  background: linear-gradient(180deg, #1d2a3d, #22304a);
+}
 .content td {
   padding: 11px 18px;
   border-bottom: 1px solid var(--border-light);
@@ -412,6 +501,9 @@ figure { margin: 1.5rem 0; text-align: center; }
 .content tr:last-child td { border-bottom: none; }
 .content tbody tr:hover td {
   background: rgba(79,140,255,.03);
+}
+:root[data-bs-theme="dark"] .content tbody tr:hover td {
+  background: rgba(79,140,255,.07);
 }
 
 /* ==========================================
@@ -424,6 +516,8 @@ figure { margin: 1.5rem 0; text-align: center; }
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover { background: #a3b5ce; }
+:root[data-bs-theme="dark"] ::-webkit-scrollbar-thumb { background: #2c3a4d; }
+:root[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: #3a4a63; }
 
 /* ==========================================
    15. 返回顶部
@@ -492,6 +586,10 @@ strong, b {
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   transition: border-color .2s, box-shadow .2s;
+}
+:root[data-bs-theme="dark"] #search-input {
+  background: #141d2b;
+  color: var(--text-primary);
 }
 #search-input:focus {
   border-color: var(--accent);
